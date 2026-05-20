@@ -1,1 +1,22 @@
+name: Run Fruit AI
 
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  run-fruit-ai:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: استنساخ المستودع
+        uses: actions/checkout@v4
+
+      - name: تثبيت بايثون
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: تشغيل النموذج
+        run: python fruit_ai.py
